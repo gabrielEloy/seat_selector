@@ -16,11 +16,11 @@ and the app will automatically select the best available seats for you
 
 # How to run it
 
-## Enviroment
+## Environment
 
 In order to run it you must have a couple dependecies installed 
 
-### front end enviroment
+### front end Environment
 
 In order to run the front end app, you must have :
 
@@ -28,7 +28,7 @@ In order to run the front end app, you must have :
 - <a href="https://classic.yarnpkg.com" target="_blank">Yarn (optional)</a>
 
 
-### Back end enviroment
+### Back end Environment
 
 In order to run the back end API, you must have:
 
