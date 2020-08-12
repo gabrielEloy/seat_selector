@@ -7,7 +7,7 @@ import Divider from '../../components/Divider'
 import { getBestSeats } from '../../services/api'
 
 const SendVenue = () => {
-    const { currentStep, setCurrentStep, setBestSeats } = useContext(StepContext)
+    const {  setCurrentStep, setBestSeats } = useContext(StepContext)
     const [content, setContent] = useState({
         seats: {
             value: '',
@@ -66,9 +66,10 @@ const SendVenue = () => {
                 <input
                     name="seats"
                     onChange={updateValue}
-                    type="text"
-                    value={content.seats.value}>
-
+                    type="number"
+                    value={content.seats.value}
+                >
+                    
                 </input>
                 <Divider />
             </div>
@@ -76,9 +77,11 @@ const SendVenue = () => {
                 <p className="title-text">
                     Venue Layout
                 </p>
-                <textarea value={content.layout.value} name="layout" onChange={updateValue}>
-
-                </textarea>
+                <textarea 
+                    value={content.layout.value} 
+                    name="layout" 
+                    onChange={updateValue} 
+                />
                 <button onClick={sendVal}>
                     see Result
                 </button>

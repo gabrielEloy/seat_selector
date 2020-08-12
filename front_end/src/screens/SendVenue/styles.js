@@ -23,6 +23,17 @@ const Wrapper = styled.div`
                 box-shadow: 0 0 3pt 2pt ${COLORS.darkPurple};
                 outline: none;
             }
+
+            ::-webkit-outer-spin-button,
+            ::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            [type=number] {
+            -moz-appearance: textfield;
+            }
         }
     }
 
