@@ -1,11 +1,11 @@
 version: '3'
-
 services:
   backend:
     build: ./backend
     ports:
       - "8000:8000"
-    network_mode: 'host'
+    expose: 
+      - "8000"
   frontentd:
     depends_on:
       - backend
@@ -13,5 +13,6 @@ services:
     working_dir: /usr/app
     ports: 
       - "3000:3000"
-    network_mode: 'host'
+    expose: 
+      - "3000"
     stdin_open: true

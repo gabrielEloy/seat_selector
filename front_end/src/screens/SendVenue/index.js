@@ -5,33 +5,14 @@ import { toast } from 'react-toastify'
 import StepContext from '../../contexts/StepContext';
 import Divider from '../../components/Divider'
 import { getBestSeats } from '../../services/api'
+import { isValidJSONString, jsonValueValidator } from '../../utils/json';
 
 const SendVenue = () => {
-    const {  setCurrentStep, setBestSeats } = useContext(StepContext)
-    const [content, setContent] = useState({
-        seats: {
-            value: '',
-            errorLabel: 'Seats number'
-        },
-        layout: {
-            value: '',
-            errorLabel: 'Venue Layout'
-        }
-    })
+    const {  setCurrentStep, setBestSeats, content, updateValue } = useContext(StepContext)
 
-
-    const updateValue = event => {
-        setContent({
-            ...content,
-            [event.target.name]: {
-                ...content[event.target.name],
-                value: event.target.value
-            }
-        })
-    }
-
-    const sendVal = async () => {
+    const valuesValidator = () => {
         const formErrors = []
+        
         
         Object.keys(content).forEach(field => {
             if(!content[field].value){
@@ -43,6 +24,32 @@ const SendVenue = () => {
             formErrors.forEach(currentError => {
                 toast.error(currentError)
             })
+            return false
+        }
+        
+        if(content.layout.value){
+            const { value: layout } = content.layout
+            if(!isValidJSONString(layout)){
+                toast.error('The inserted JSON is broken');
+                return false
+            }
+
+            const missingFields = jsonValueValidator(JSON.parse(layout), ['venue', 'seats'])
+            
+            if(missingFields.length){
+                missingFields.forEach(error => toast.error(`missing field ${error}`))
+                return false
+            }
+        }
+        
+        return true;
+    }
+    
+    
+    const sendVal = async () => {
+        const validValues = valuesValidator()
+
+        if(!validValues){
             return
         }
 

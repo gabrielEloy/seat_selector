@@ -16,8 +16,29 @@ const App = () => {
     message: ''
   })
 
+  const [content, setContent] = useState({
+    seats: {
+        value: '',
+        errorLabel: 'Seats number'
+    },
+    layout: {
+        value: '',
+        errorLabel: 'Venue Layout'
+    }
+  })
+
+  const updateValue = event => {
+    setContent({
+        ...content,
+        [event.target.name]: {
+            ...content[event.target.name],
+            value: event.target.value
+        }
+    })
+}
+
   return (
-    <StepContext.Provider value={{ currentStep, setCurrentStep, bestSeats, setBestSeats }}>
+    <StepContext.Provider value={{ currentStep, setCurrentStep, bestSeats, setBestSeats, content, updateValue }}>
       <Wrapper>
         <header>
           <h1>Seat Selector</h1>
