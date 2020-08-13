@@ -5,8 +5,6 @@ class SeatController < ApplicationController
   def get_seats(array, row, initial_column, target_length, seats)
     while array.length != target_length.to_i()
       distance = Utils.get_adjacent_seat_distance(array.length() - 1)
-      p initial_column
-      p distance
       current_target_column = initial_column.to_i() + distance.to_i()
       current_target_id = row + current_target_column.to_s()
       

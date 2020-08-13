@@ -40,6 +40,16 @@ In order to run the back end API, you must have:
 
 Once you have your environment set up, you have to install the app's dependencies
 
+## Using Docker
+
+If you have docker set up in your environment
+
+you can just run the command 
+
+docker compose and then access the application's front end in 
+
+localhost:3000
+
 ### Front end 
 
 using your terminal navigate to the front_end folder and type
@@ -77,4 +87,4 @@ and after that, open another terminal, navigate to the front_end folder and type
 yarn start
 ```
 
-And your project will automatically open.
+and access your project's front end in localhost:3000
